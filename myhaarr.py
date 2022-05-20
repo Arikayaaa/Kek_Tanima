@@ -1,3 +1,6 @@
+from picamera.array import PiRGBArray
+from picamera import PiCamera
+import time
 import numpy as np
 import cv2
 
@@ -7,7 +10,10 @@ face_cascade = cv2.CascadeClassifier('myhaar5.xml')
 #this is the cascade we just made. Call what you want
 #watch_cascade = cv2.CascadeClassifier('watchcascade10stage.xml')
 
-cap = cv2.VideoCapture(0)
+cap = PiCamera()
+cap.resolution = (640,480)
+cap.framerate = 32
+#rawCapture _ PiRGBArray(camera, size = (640,480))
 
 while 1:
     ret, img = cap.read()
